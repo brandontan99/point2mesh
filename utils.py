@@ -13,10 +13,10 @@ def manifold_upsample(mesh, save_path, Mesh, num_faces=2000, res=3000, simplify=
     temp_file = os.path.join(save_path, random_file_name('obj'))
     opts = ' ' + str(res) if res is not None else ''
 
-    manifold_script_path = os.path.join(MANIFOLD_DIR, 'manifold')
+    manifold_script_path = os.path.join(MANIFOLD_DIR, 'ManifoldPlus')
     if not os.path.exists(manifold_script_path):
         raise FileNotFoundError(f'{manifold_script_path} not found')
-    cmd = "{} {} {}".format(manifold_script_path, fname, temp_file + opts)
+    cmd = "{} --input {} --output {}".format(manifold_script_path, fname, temp_file + opts)
     os.system(cmd)
 
     if simplify:
